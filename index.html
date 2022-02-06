@@ -1,13 +1,14 @@
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script>
-      let HOST = location.origin.replace(/^http/, 'ws')
-      let ws = new WebSocket(HOST);
-      let el;
+      var host = "wss://mapa-ws.herokuapp.com/";
+      var ws = new WebSocket(host);
+      var el;
 
       ws.onmessage = (event) => {
         el = document.getElementById('server-time');
-        el.innerHTML = 'Server time: ' + event.data;
+        el.innerHTML = 'Server: ' + event.data;
       };
     </script>
   </head>
