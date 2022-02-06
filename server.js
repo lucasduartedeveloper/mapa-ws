@@ -12,16 +12,20 @@ const server = express()
 
 const wss = new Server({ server });
 
-wss.on('connection', (ws) => {
-  console.log('Client connected');
-  ws.on('close', () => console.log('Client disconnected'));
-});
+// Conexão
+wss.on("connection", (ws) => {
+  console.log("Client connected");
 
-wss.on("message",  (msg) => {
+  ws.on("close", () => console.log("Client disconnected"));
+
+  // Mensagem
+  ws.on("message",  (msg) => {
       console.log("Message received");
       wss.clients.forEach((client) => {
            client.send(msg);
       });
+   });
+
 });
 
 /*
